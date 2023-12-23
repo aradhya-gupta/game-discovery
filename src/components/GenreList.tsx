@@ -39,6 +39,7 @@ export const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 						/>
 						<Button variant="link" onClick={() => onSelectGenre(genre)}>
 							<Text
+								noOfLines={1}
 								fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
 								fontSize="lg"
 							>
