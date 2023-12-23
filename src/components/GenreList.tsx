@@ -1,6 +1,7 @@
 import {
 	Button,
 	HStack,
+	Heading,
 	Image,
 	List,
 	ListItem,
@@ -28,27 +29,35 @@ export const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 			</Stack>
 		);
 	return (
-		<List>
-			{genres.map((genre) => (
-				<ListItem key={genre.id} paddingY="5px">
-					<HStack>
-						<Image
-							boxSize="32px"
-							borderRadius={8}
-							src={getCroppedImageUrl(genre.image_background)}
-						/>
-						<Button variant="link" onClick={() => onSelectGenre(genre)}>
-							<Text
-								noOfLines={1}
-								fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
-								fontSize="lg"
-							>
-								{genre.name}
-							</Text>
-						</Button>
-					</HStack>
-				</ListItem>
-			))}
-		</List>
+		<>
+			<Heading fontSize="2xl" marginBottom={3}>
+				Genres
+			</Heading>
+			<List>
+				{genres.map((genre) => (
+					<ListItem key={genre.id} paddingY="5px">
+						<HStack>
+							<Image
+								boxSize="32px"
+								borderRadius={8}
+								objectFit="cover"
+								src={getCroppedImageUrl(genre.image_background)}
+							/>
+							<Button variant="link" onClick={() => onSelectGenre(genre)}>
+								<Text
+									noOfLines={1}
+									fontWeight={
+										selectedGenre?.id === genre.id ? "bold" : "normal"
+									}
+									fontSize="lg"
+								>
+									{genre.name}
+								</Text>
+							</Button>
+						</HStack>
+					</ListItem>
+				))}
+			</List>
+		</>
 	);
 };
